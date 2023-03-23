@@ -54,9 +54,15 @@
 
         function validateForm(){
             for(var i = 0; i < inputs.length; i++){
-                var match = inputs[i].value.match(/\w/);
+                var match;
+                if (inputs[i].id == "name"){
+                    match = inputs[i].value.match(/[A-Z,a-z]{1,}/);
+                }else{
+                    match = inputs[i].value.match(/\w{1,}/);
+                }
+                
                 if(match == null){
-                    spanlist[i].innerHTML = "ERROR - Don't leave any fields blank";
+                    spanlist[i].innerHTML = "ERROR - FOllow the requested input format";
                 }else{
                     spanlist[i].innerHTML = " ";
                 }
